@@ -1,5 +1,115 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  font-family: var(--font, sans-serif);
+  font-size: 18px;
+  font-style: normal;
+  background: url(../images/cover-image-dark.png) var(--accent-color, #000028);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  max-inline-size: 375px;
+  max-block-size: 668px;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr 192px 1fr;
+  position: relative;
+  font-weight: 400;
+  line-height: 18px; /* 100% */
+  block-size: 100vh;
+  padding: 10px;
+}
+
+.decorate {
+  position: absolute;
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 25px; /* 138.889% */
+  inset-inline-end: 10px;
+  inset-block-start: 10px;
+}
+.decorate::after {
+  content: '';
+  background: url(../images/ellipse.svg) center no-repeat;
+  background-size: 80%;
+  fill: #FF0070;
+  filter: drop-shadow(0px 0px 1px #FF0070);
+  padding-inline-start: 25px;
+  border-top: 1px solid #FF0070;
+  border-right: 1px solid #FF0070;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+}
+
+.header__theme-menu-list {
+  gap: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.header__theme-menu-button{
+  font-family: var(--font, sans-serif);
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: 25px; /* 138.889% */
+  background: transparent;
+  color: var(--text-color, #FF0070);
+  block-size: 26px;
+  padding-inline: 13px;
+  border: none;
+  text-transform: lowercase;
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--text-color, #FF0070);
+}
+
+.header__title {
+  color: #DB00FF;
+  text-shadow: 4px 4px 0px var(--text-color, #FF0070);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 82.5%; /* 95.7px */
+}
+
+.header__text {
+  align-self: center;
+  background: var(--text-color, #FF0070);
+  color: var(--accent-color, #000028);
+  inline-size: 355px;
+  block-size: 117px;
+  font-weight: 700;
+  line-height: 23.4px; /* 130% */
+  white-space: pre-line;
+}
+
+/* @media (width < 768) {
+  .page {
+    max-inline-size: 375px;
+    max-block-size: 668px;
+  }
+  .header__text {
+    inline-size: 355px;
+    block-size: 117px;
+  }
+}
+
+@media (width >= 768) {
+  .page {
+    max-inline-size: 768px;
+    max-block-size: 1024px;
+  }
+  .header__text {
+    inline-size: 364px;
+    block-size: 117px;
+  }
+} */
