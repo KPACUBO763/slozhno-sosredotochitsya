@@ -1,55 +1,76 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  display: grid;
+  gap: 40px;
   font-family: var(--font, sans-serif);
   font-size: 18px;
   font-style: normal;
-  background: url(../images/cover-image-dark.png) var(--accent-color, #000028);
+  line-height: 23.4px; /* 130% */
+  background: var(--bg-image) var(--bg-color, #000028);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  max-inline-size: 375px;
-  max-block-size: 668px;
+  /* max-inline-size: 375px;
+  max-block-size: 668px; */
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 192px 1fr;
+  grid-template-rows: repeat(3, auto);
+  background: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   position: relative;
   font-weight: 400;
   line-height: 18px; /* 100% */
-  block-size: 100vh;
+  min-height: 100vh;
   padding: 10px;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: relative;
+  left: calc(100% - 25px);
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--accent-color);
+  border-inline-end: 1px solid var(--accent-color);
+}
+
+.header.decorated-zone::before {
+  background: url(../images/ellipse.svg) center no-repeat;
+  fill: var(--text-color);
+  filter: drop-shadow(0px 0px 1px var(--accent-color));
+}
+
+.decorated-zone::after {
+  content: '';
+  position: relative;
+  top: calc(100% - 25px);
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-end: 1px solid var(--accent-color);
+  border-inline-start: 1px solid var(--accent-color);
 }
 
 .decorate {
   position: absolute;
-  color: var(--text-color);
+  color: var(--accent-color);
   font-weight: 400;
   line-height: 25px; /* 138.889% */
-  inset-inline-end: 10px;
+  inset-inline-end: 38px;
   inset-block-start: 10px;
-}
-.decorate::after {
-  content: '';
-  background: url(../images/ellipse.svg) center no-repeat;
-  background-size: 80%;
-  fill: #FF0070;
-  filter: drop-shadow(0px 0px 1px #FF0070);
-  padding-inline-start: 25px;
-  border-top: 1px solid #FF0070;
-  border-right: 1px solid #FF0070;
 }
 
 .header__theme-menu {
   justify-self: end;
-  align-self: center;
 }
 
 .header__theme-menu-list {
   gap: 10px;
-  list-style: none;
   display: flex;
   flex-direction: column;
 }
@@ -61,7 +82,7 @@
   font-weight: inherit;
   line-height: 25px; /* 138.889% */
   background: transparent;
-  color: var(--text-color, #FF0070);
+  color: var(--accent-color, #FF0070);
   block-size: 26px;
   padding-inline: 13px;
   border: none;
@@ -69,28 +90,93 @@
 }
 
 .header__theme-menu-button_active {
-  outline: 1px solid var(--text-color, #FF0070);
+  outline: 1px solid var(--accent-color, #FF0070);
 }
 
-.header__title {
+.title {
+  align-self: center;
   color: #DB00FF;
-  text-shadow: 4px 4px 0px var(--text-color, #FF0070);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  font-style: normal;
   font-weight: 700;
   line-height: 82.5%; /* 95.7px */
 }
 
+.header__title {
+  text-shadow: 4px 4px 0px var(--accent-color, #FF0070);
+}
+
 .header__text {
-  align-self: center;
-  background: var(--text-color, #FF0070);
-  color: var(--accent-color, #000028);
-  inline-size: 355px;
-  block-size: 117px;
-  font-weight: 700;
   line-height: 23.4px; /* 130% */
+  align-self: end;
   white-space: pre-line;
 }
+
+.title-decor {
+  background: var(--accent-color, #FF0070);
+  color: var(--bg-color, #000028);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content {
+  display: grid;
+  gap: 50px;
+  padding: 0px 10px;
+}
+
+.section:not(:last-child) {
+  display: grid;
+  gap: 20px;
+}
+
+.section__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px; /* 130% */
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.article__title {
+  line-height: 23.4px; /* 130% */
+  margin-block-end: 10px;
+}
+
+.article__text {
+  font-weight: 400;
+}
+
+.double_title {
+  margin-bottom: 20px;
+}
+
+.article__subtitle {
+  font-weight: 400;
+}
+
+.image_list {
+  display: grid;
+  gap: 10px;
+}
+
+.image {
+  display: block;
+  block-size: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  display: grid;
+  background: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 10px;
+  min-height: 100vh;
+}
+
 
 /* @media (width < 768) {
   .page {
