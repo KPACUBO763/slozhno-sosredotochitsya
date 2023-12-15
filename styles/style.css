@@ -38,10 +38,11 @@
 .decorate::after {
   content: '';
   position: relative;
-  inset-inline-start: 10px;
+  inset-inline-start: 8px;
   display: inline-block;
-  block-size: 12px;
-  inline-size: 12px;
+  block-size: 11px;
+  inline-size: 11px;
+  filter: drop-shadow(0px 0px 4px var(--shadow-color));
   border: var(--decor-border);
   border-radius: 50%;
   background-color: var(--decor-color);
@@ -49,8 +50,6 @@
 
 .header::before {
   content: '';
-  /* position: relative;
-  left: calc(100% - 25px); */
   position: absolute;
   inset-inline-end: 10px;
   inset-block-start: 10px;
@@ -65,7 +64,6 @@
   position: absolute;
   inset-inline-start: 10px;
   inset-block-end: 10px;
-  /* top: calc(100% - 25px); */
   inline-size: 25px;
   block-size: 25px;
   border-block-end: var(--decor-border);
@@ -166,6 +164,10 @@
   font-weight: 400;
 }
 
+.section > .double_title {
+  margin-block-end: 0;
+}
+
 .link {
   color: var(--article-color);
   text-decoration: none;
@@ -179,10 +181,6 @@
 .link:focus-visible {
   border: 1px solid var(--article-color);
   outline: none;
-}
-
-.double_title {
-  margin-bottom: 20px;
 }
 
 .article__subtitle {
@@ -217,9 +215,6 @@
   content: '';
   position: relative;
   left: calc(100% - 25px);
-  /* position: absolute;
-  inset-inline-end: 10px;
-  inset-block-start: 10px; */
   inline-size: 25px;
   block-size: 25px;
   border-block-start: var(--decor-border);
@@ -230,15 +225,15 @@
   content: '';
   position: relative;
   top: calc(100% - 25px);
-  /* position: absolute;
-  inset-inline-start: 10px;
-  inset-block-end: 10px; */
   inline-size: 25px;
   block-size: 25px;
   border-block-end: var(--decor-border);
   border-inline-start: var(--decor-border);
 }
 
+.footer__title {
+  text-shadow: 2px 2px 0px var(--shadow-color);
+}
 
 @media (width >= 768px) {
   .page {
@@ -300,7 +295,7 @@
   }
 
   .section:nth-child(3) .section__title {
-    grid-row: span 5;
+    grid-row: span 6;
   }
 
   .section:last-child {
@@ -359,12 +354,16 @@
     margin-block-start: 0;
   }
 
+  .section:nth-child(2n + 1) {
+    gap: 10px;
+    row-gap: 20px;
+  }
+
   .section:nth-child(2) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
     'section__title . .'
     'article article article';
-    /* grid-template: max-content 1fr / repeat(3, 1fr); */
   }
 
   .section:nth-child(2) .section__title {
